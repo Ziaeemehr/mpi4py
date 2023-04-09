@@ -12,3 +12,6 @@ else:
 comm.Bcast(data, root=0)
 for i in range(100):
     assert(data[i] == i)
+
+# execute: mpiexec -n 2 python 06_broadcasting_np_array.py
+# output: no output

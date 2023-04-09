@@ -22,3 +22,4 @@ recvbuf = np.empty(5, dtype=np.float32)
 comm.Scatter(sendbuf, recvbuf, root=0)
 recvbuf = torch.from_numpy(recvbuf)
 assert(torch.allclose(recvbuf, torch.tensor(rank, dtype=torch.float32)))
+

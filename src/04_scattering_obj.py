@@ -1,5 +1,5 @@
 # Collective Communication
-# scattering data
+# Scatters an object to other processes in a communicator.
 
 from mpi4py import MPI
 

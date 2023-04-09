@@ -1,3 +1,5 @@
+# Broadcasting a torch tensor with MPI
+
 from mpi4py import MPI
 import numpy as np
 import torch
@@ -12,4 +14,9 @@ else:
 
 x = comm.bcast(data, root=0)
 print(f"Rank {rank}: {x}")
+
+# execute: mpiexec -n 2 python 07_broadcasting_torch.py
+# output:
+# Rank 0: tensor([0., 1., 2., 3., 4.])
+# Rank 1: tensor([0., 1., 2., 3., 4.])
 

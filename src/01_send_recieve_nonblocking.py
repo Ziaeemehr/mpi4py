@@ -17,3 +17,5 @@ elif rank == 1:
     data = req.wait()
     print(data)
 
+# execute: mpiexec -n 2 python 01_send_recieve_nonblocking.py
+# output: {'a': 7, 'b': 3.14}

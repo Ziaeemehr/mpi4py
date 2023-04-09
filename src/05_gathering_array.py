@@ -1,15 +1,16 @@
-#!/usr/bin/env python3
+# gathering non-equal sized arrays
 
+import random
 import numpy as np
 from mpi4py import MPI
-import random
 
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 root = 0
 
+# Create a random sized array of random values
 local_array = [rank] * random.randint(2, 5)
-print("rank: {}, local_array: {}".format(rank, local_array))
+# print("rank: {}, local_array: {}".format(rank, local_array))
 sendbuf = np.array(local_array)
 
 # Collect local array sizes using the high-level mpi4py gather
@@ -24,3 +25,7 @@ else:
 comm.Gatherv(sendbuf=sendbuf, recvbuf=(recvbuf, sendcounts), root=root)
 if rank == root:
     print("Gathered array: {}".format(recvbuf))
+
+# execute: mpiexec -n 2 python 05_gathering_array.py
+# sendcounts: [4 3], total: 7
+# Gathered array: [0 0 0 0 1 1 1]

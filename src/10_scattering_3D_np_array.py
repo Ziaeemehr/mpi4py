@@ -1,3 +1,6 @@
+# Scattering a 3D numpy array
+# Scatter uses first dimension to scatter data
+
 from mpi4py import MPI
 import numpy as np
 
@@ -13,3 +16,6 @@ if rank == 0:
 recvbuf = np.empty((2, 3), dtype=np.float32)
 comm.Scatter(sendbuf, recvbuf, root=0)
 assert(np.allclose(recvbuf, rank * np.ones((2, 3), dtype=np.float32)))
+
+# execute: mpiexec -n 4 python 10_scattering_3D_np_array.py
+# output: no output

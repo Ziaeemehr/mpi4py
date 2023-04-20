@@ -15,3 +15,5 @@ elif rank == 1:
     data = comm.recv(source=0, tag=11)
     print(data)
 
+# execute: mpiexec -n 2 python 00_send_recieve.py
+# output: {'a': 7, 'b': 3.14}
